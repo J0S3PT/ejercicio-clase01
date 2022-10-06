@@ -1,0 +1,81 @@
+<html>
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+        <script>
+            mermaid.initialize({ startOnLoad: true });
+        </script>
+
+        <h5>Tarea</h5>
+        <div class="mermaid">
+            classDiagram
+
+            class TipoDeporte{
+                &lt;&lt;enumeration&gt;&gt;
+                Futbol
+                Voley
+                Basquetball
+                Baseball
+                Tenis
+                Handball
+                Karate
+                Judo
+                Boxeo
+            }    
+
+            class Equipo{
+                -String nombre
+                -TipoDeporte  tipo_deporte
+                -String siglas
+                -Date fecha_fundacion
+                
+                +getNombre()
+                +setNombre(String nombre)
+                +getTipo_deporte()
+                +setTipo_deporte(TipoDeporte tipo_deporte)
+                +getSiglas()
+                +setSiglas(String siglas)
+                +getFechaFundacion()
+                +setFechaFundacion(Date fecha_fundacion)
+                +generarRolesPago()
+                +planificacionCronogramaJuegos()
+            }
+
+            class Jugador{
+                -String nombre
+                -String apellido
+                -Date fecha_nacimiento
+                -String direccion_domicilio
+                
+                +getNombre()
+                +setNombre(String nombre)
+                +getApellido()
+                +setApellido(String apellido)
+                +getFecha_nacimiento()
+                +setFecha_nacimiento(Date fecha_nacimiento)
+                +getDireccion_domicilio()
+                +setDireccion_domicilio(Date direccion_domicilio)
+                
+                +capacitacion()
+                +planificacionEntrenamiento()
+            }
+
+            class Sancion{
+                -String observacion
+                -Decimal multa
+                -Date fecha_creacion
+                
+                +getObservacion()
+                +setObservacion(String observacion)
+                +getMulta()
+                +setMulta(Decimal multa)
+                +notificarMultaJugador()
+                +calcularMulta()
+            }
+
+            TipoDeporte .. Equipo
+            Equipo "1" --> "0..*" Jugador : posee
+            Jugador "1" --> "0..*" Sancion : tiene
+
+        </div>
+    </body>
+</html>
